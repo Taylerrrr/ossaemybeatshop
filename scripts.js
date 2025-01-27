@@ -9,28 +9,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const productId = this.closest(".product").dataset.productId;
-            saveReview(productId, reviewText);
+            saveReview(reviewText);
             this.previousElementSibling.value = "";
             loadReviews();
         });
     });
 });
 
-function saveReview(productId, text) {
+function saveReview(text) {
     const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    reviews.push({ productId, text, date: new Date().toLocaleString() });
+    reviews.push({ text, date: new Date().toLocaleString() });
     localStorage.setItem("reviews", JSON.stringify(reviews));
 }
 
 function loadReviews() {
     const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    document.querySelectorAll(".product").forEach(product => {
-        const productId = product.dataset.productId;
-        const reviewsList = product.querySelector(".reviews-list");
+    document.querySelectorAll(".reviews-list").forEach(reviewsList => {
         reviewsList.innerHTML = "";
-
-        reviews.filter(review => review.productId === productId).forEach(review => {
+        reviews.forEach(review => {
             const reviewElement = document.createElement("div");
             reviewElement.className = "review-item";
             reviewElement.innerHTML = `
