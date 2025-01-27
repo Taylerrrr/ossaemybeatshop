@@ -4,6 +4,9 @@ body {
     padding: 0;
     background-color: #000;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
@@ -47,6 +50,7 @@ nav ul li a:hover {
 .about, .products {
     padding: 50px 0;
     text-align: center;
+    flex: 1;
 }
 
 .products .product-list {
@@ -136,9 +140,10 @@ nav ul li a:hover {
 }
 
 footer {
-    background-color: #111;
-    color: #fff;
+    background-color: #000;
+    color: #666;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
+    padding: 15px 0;
+    border-top: 1px solid #222;
+    margin-top: auto;
 }
