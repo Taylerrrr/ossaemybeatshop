@@ -3,55 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товары - ossaemy</title>
+    <title>Коллекция - ossaemy</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="lv-header">
         <div class="container">
-            <h1>ossaemy</h1>
-            <nav>
+            <h1 class="lv-logo">OSSAEMY</h1>
+            <nav class="lv-nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
-                    <li><a href="products.html">Товары</a></li>
+                    <li><a href="products.html">Коллекция</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="products">
+    <section class="lv-collection">
         <div class="container">
-            <h2>Наши товары</h2>
-            <div class="product-list">
-                <div class="product">
-                    <h3>MP3</h3>
-                    <p>Стоимость: 700₽</p>
-                    <button onclick="window.open('https://t.me/ossaemy', '_blank')">Купить</button>
-                </div>
-                <div class="product">
-                    <h3>WAV</h3>
-                    <p>Стоимость: 1200₽</p>
-                    <button onclick="window.open('https://t.me/ossaemy', '_blank')">Купить</button>
-                </div>
-                <div class="product">
-                    <h3>EXCLUSIVE</h3>
-                    <p>Стоимость: 10000₽</p>
-                    <button onclick="window.open('https://t.me/ossaemy', '_blank')">Купить</button>
-                </div>
+            <h2 class="lv-collection-title">Коллекция</h2>
+            
+            <div class="lv-products">
+                <article class="lv-product-card">
+                    <div class="lv-product-image"></div>
+                    <h3>MP3 Collection</h3>
+                    <p class="lv-price">700₽</p>
+                    <button class="lv-product-cta" onclick="window.open('https://t.me/ossaemy', '_blank')">
+                        <span>Приобрести</span>
+                        <div class="lv-cta-line"></div>
+                    </button>
+                </article>
+
+                <article class="lv-product-card">
+                    <div class="lv-product-image"></div>
+                    <h3>WAV Edition</h3>
+                    <p class="lv-price">1 200₽</p>
+                    <button class="lv-product-cta" onclick="window.open('https://t.me/ossaemy', '_blank')">
+                        <span>Приобрести</span>
+                        <div class="lv-cta-line"></div>
+                    </button>
+                </article>
+
+                <article class="lv-product-card">
+                    <div class="lv-product-image"></div>
+                    <h3>Exclusive</h3>
+                    <p class="lv-price">10 000₽</p>
+                    <button class="lv-product-cta" onclick="window.open('https://t.me/ossaemy', '_blank')">
+                        <span>Приобрести</span>
+                        <div class="lv-cta-line"></div>
+                    </button>
+                </article>
             </div>
 
-            <div class="global-reviews">
-                <h2>Отзывы покупателей</h2>
-                <div class="reviews-list"></div>
-                <textarea placeholder="Оставьте ваш отзыв"></textarea>
-                <button class="submit-review">Отправить отзыв</button>
+            <div class="lv-reviews">
+                <h3>Отзывы клиентов</h3>
+                <div class="lv-reviews-list"></div>
+                <div class="lv-review-form">
+                    <textarea placeholder="Ваш отзыв..."></textarea>
+                    <button class="lv-review-submit">Отправить</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer class="lv-footer">
         <div class="container">
-            <p>&copy; 2025 ossaemy. Все права защищены.</p>
+            <p class="lv-copyright">© 2025 OSSAEMY. Все права защищены</p>
         </div>
     </footer>
 
