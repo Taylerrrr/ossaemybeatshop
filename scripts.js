@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadReviews();
 
-    const submitButton = document.querySelector('.submit-review');
-    if (submitButton) {
-        submitButton.addEventListener('click', function() {
-            const reviewText = document.querySelector('.global-reviews textarea').value;
+    const submitButtons = document.querySelectorAll('.lv-review-submit');
+    submitButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const reviewText = this.previousElementSibling.value;
             if (reviewText.trim() === "") {
                 alert("Пожалуйста, напишите отзыв.");
                 return;
             }
 
             saveReview(reviewText);
-            document.querySelector('.global-reviews textarea').value = "";
+            this.previousElementSibling.value = "";
             loadReviews();
         });
-    }
+    });
 });
 
 function saveReview(text) {
@@ -28,15 +28,15 @@ function saveReview(text) {
 
 function loadReviews() {
     const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    const reviewsList = document.querySelector('.reviews-list');
+    const reviewsList = document.querySelector('.lv-reviews-list');
     
     if (reviewsList) {
         reviewsList.innerHTML = '';
         reviews.forEach(review => {
             const reviewElement = document.createElement('div');
-            reviewElement.className = 'review-item';
+            reviewElement.className = 'lv-review-item';
             reviewElement.innerHTML = `
-                <p>${review.text}</p>
+                <p>"${review.text}"</p>
                 <small>${review.date}</small>
             `;
             reviewsList.appendChild(reviewElement);
