@@ -1,39 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadReviews();
 
-    document.querySelectorAll(".submit-review").forEach(button => {
-        button.addEventListener("click", function () {
-            const reviewText = this.previousElementSibling.value;
+    const submitButton = document.querySelector('.submit-review');
+    if (submitButton) {
+        submitButton.addEventListener('click', function() {
+            const reviewText = document.querySelector('.global-reviews textarea').value;
             if (reviewText.trim() === "") {
                 alert("Пожалуйста, напишите отзыв.");
                 return;
             }
 
             saveReview(reviewText);
-            this.previousElementSibling.value = "";
+            document.querySelector('.global-reviews textarea').value = "";
             loadReviews();
         });
-    });
+    }
 });
 
 function saveReview(text) {
     const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    reviews.push({ text, date: new Date().toLocaleString() });
+    reviews.push({ 
+        text: text, 
+        date: new Date().toLocaleString('ru-RU') 
+    });
     localStorage.setItem("reviews", JSON.stringify(reviews));
 }
 
 function loadReviews() {
     const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    document.querySelectorAll(".reviews-list").forEach(reviewsList => {
-        reviewsList.innerHTML = "";
+    const reviewsList = document.querySelector('.reviews-list');
+    
+    if (reviewsList) {
+        reviewsList.innerHTML = '';
         reviews.forEach(review => {
-            const reviewElement = document.createElement("div");
-            reviewElement.className = "review-item";
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'review-item';
             reviewElement.innerHTML = `
                 <p>${review.text}</p>
                 <small>${review.date}</small>
             `;
             reviewsList.appendChild(reviewElement);
         });
-    });
+    }
 }
